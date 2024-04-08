@@ -1,32 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import thunderLogo from '/thunder.png'
+
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+        <a href="https://github.com/thunder-app/thunder" target="_blank">
+          <img src={thunderLogo} className="logo" alt="Thunder logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
+      <h1>Thunder</h1>
+      <h2>An open-source, cross-platform Lemmy client for iOS and Android</h2>
+      <p>Fully free of advertisements and trackers</p>
+      <br />
+
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        Click <a href="https://github.com/thunder-app/thunder"> here</a> to learn more
       </p>
     </>
   )

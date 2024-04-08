@@ -1,6 +1,6 @@
 {
   "name": "thunder_site",
-  "homepage": "http://thunder-app.github.io",
+  "homepage": "https://thunder-app.github.io",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build",
+    "deploy" : "gh-pages -d dist --cname thunderapp.dev",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

@@ -1,39 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 
-import Root from '@/pages/root';
-import ErrorPage from '@/pages/error';
+import { BrowserRouter, Routes, Route } from 'react-router'
 
-import './index.css';
-import Landing from './pages/landing';
-import Docs from './pages/docs';
-import Downloads from './pages/downloads';
+import { ThemeProvider } from '@/components/theme-provider'
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/",
-        element: <Landing />,
-      },
-      {
-        path: "/download",
-        element: <Downloads />,
-      },
-      {
-        path: "/docs",
-        element: <Docs />,
-      }
-    ],
-  },
-]);
+import Root from '@/pages/root'
+import Landing from '@/pages/landing.tsx'
+import Download from '@/pages/download'
+import Documentation from '@/pages/documentation'
+import OAuth from '@/pages/oauth'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+import '@/index.css'
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <ThemeProvider defaultTheme="dark" storageKey="thunder-theme">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/oauth" element={<OAuth />} />
+          <Route path="/" element={<Root />}>
+            <Route index element={<Landing />} />
+            <Route path="download" element={<Download />} />
+            <Route path="docs" element={<Documentation />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
+  </StrictMode>,
 )

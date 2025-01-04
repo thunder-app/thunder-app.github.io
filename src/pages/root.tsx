@@ -1,11 +1,10 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router';
 
-import Header from "@/components/custom/header";
-import { ThemeProvider } from "@/components/custom/theme-provider";
+import Header from '@/components/custom/header';
 
 function Root() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="thunder-ui-theme">
+    <>
       <Header />
       <Outlet />
       <div className="flex items-center justify-center text-foreground/40 h-24">
@@ -13,7 +12,7 @@ function Root() {
           Thunder is available under GNU AGPL v3 license.
         </div>
       </div>
-    </ThemeProvider>
+    </>
   );
 }
 

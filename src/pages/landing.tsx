@@ -5,6 +5,10 @@ import { ArrowRight } from 'lucide-react';
 
 import thunder from '@/assets/thunder.png';
 
+import theme_modes from '@/assets/theme_modes.png';
+
+import personalize from '@/assets/personalize.png';
+
 function Landing() {
   return (
     <div className="flex flex-col items-center h-full">
@@ -51,38 +55,44 @@ function Landing() {
 
       <section className="container mx-auto py-14">
         <div className="flex flex-wrap justify-center">
-          <div className="w-full md:w-1/2 p-4 subsection">
+          <div className="w-full lg:w-1/2 p-4 subsection">
             <div className="p-6">
+              <img src={personalize} className="rounded-lg mb-4" alt="Blocking and Filtering" />
               <h3 className="text-2xl font-bold mb-4">Personalize Your Feed</h3>
               <p className="text-gray-600 dark:text-gray-400">Use keyword filters to automatically filter posts. Block unwanted users, communities, or instances. Tailor your feed to show only the content you care about.</p>
             </div>
           </div>
-          <div className="w-full md:w-1/2 p-4 subsection">
+          <div className="w-full lg:w-1/2 p-4 subsection">
             <div className="p-6">
+              <img src={theme_modes} className="rounded-lg mb-4" alt="Light, Dark and Material You" />
               <h3 className="text-2xl font-bold mb-4">Theming</h3>
               <p className="text-gray-600 dark:text-gray-400">Easily switch between light and dark themes. Customize with Material You colors or select your own accent color to match your style.</p>
             </div>
           </div>
-          <div className="w-full md:w-1/2 p-4 subsection">
+          <div className="w-full lg:w-1/2 p-4 subsection">
             <div className="p-6">
+              <img src={theme_modes} className="rounded-lg mb-4" alt="Light, Dark and Material You" />
               <h3 className="text-2xl font-bold mb-4">Multi-Account Support</h3>
               <p className="text-gray-600 dark:text-gray-400">Effortlessly manage multiple accounts across different instances. Add, remove, and switch between accounts with ease, all from a single interface.</p>
             </div>
           </div>
-          <div className="w-full md:w-1/2 p-4 subsection">
+          <div className="w-full lg:w-1/2 p-4 subsection">
             <div className="p-6">
+              <img src={theme_modes} className="rounded-lg mb-4" alt="Light, Dark and Material You" />
               <h3 className="text-2xl font-bold mb-4">Guest Mode</h3>
               <p className="mt-2 text-gray-600 dark:text-gray-400">Want to explore without signing up? Use Guest Mode to browse instances anonymously and enjoy Thunder's features without an account.</p>
             </div>
           </div>
-          <div className="w-full md:w-1/2 p-4 subsection">
+          <div className="w-full lg:w-1/2 p-4 subsection">
             <div className="p-6">
+              <img src={theme_modes} className="rounded-lg mb-4" alt="Light, Dark and Material You" />
               <h3 className="text-2xl font-bold mb-4">Advanced Search Capabilities</h3>
               <p className="text-gray-600 dark:text-gray-400">Search for specific posts, comments, users, communities, and even instances with Thunder's advanced search capabilities.</p>
             </div>
           </div>
-          <div className="w-full md:w-1/2 p-4 subsection">
+          <div className="w-full lg:w-1/2 p-4 subsection">
             <div className="p-6">
+              <img src={theme_modes} className="rounded-lg mb-4" alt="Light, Dark and Material You" />
               <h3 className="text-2xl font-bold mb-4">Moderator Tools</h3>
               <p className="text-gray-600 dark:text-gray-400">Manage your communities with Thunder's moderator tools. Pin important posts, remove unwanted content, or ban offending users with ease.</p>
             </div>

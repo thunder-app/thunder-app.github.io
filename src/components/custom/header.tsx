@@ -40,7 +40,7 @@ function Header() {
               return (
                 <NavigationMenuItem key={navigation.href}>
                   <Link to={{ pathname: navigation.href }}>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-transparent`}>
                       {navigation.title}
                     </NavigationMenuLink>
                   </Link>

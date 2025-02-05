@@ -9,6 +9,7 @@ import './index.css';
 import Landing from './pages/landing';
 import Docs from './pages/docs';
 import Downloads from './pages/downloads';
+import PrivacyPolicy from './pages/privacy_policy';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/docs",
         element: <Docs />,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy />,
       }
     ],
   },

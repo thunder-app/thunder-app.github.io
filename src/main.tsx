@@ -10,6 +10,7 @@ import Landing from './pages/landing';
 import Docs from './pages/docs';
 import Downloads from './pages/downloads';
 import PrivacyPolicy from './pages/privacy_policy';
+import TermsOfUse from './pages/terms_of_use';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/privacy-policy",
         element: <PrivacyPolicy />,
+      },
+      {
+        path: "/terms-of-use",
+        element: <TermsOfUse />,
       }
     ],
   },

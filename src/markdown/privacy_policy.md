@@ -1,33 +1,55 @@
 ## Privacy Policy for Thunder
+This Privacy Policy describes how Thunder (“the App”) collects, processes, and protects user information. By using Thunder, you acknowledge and agree to the terms outlined below.
 
-This Privacy Policy explains how Thunder ("the App") handles your personal information. Please read this policy carefully to understand our practices regarding your data.
+### 1. Data Collection and Usage
 
-### Data Collection and Usage
-1.1. Non-Personal Data
-The Thunder app does not collect any personally identifiable information (PII) or personal data during its usage. We do not track, store, or transmit any data that can be used to identify individual users.
+#### 1.1. No Collection of Personal Data
+Thunder does not collect, track, store, or transmit any personally identifiable information (PII) or user data. The App functions as a client for third-party Lemmy servers, and all interactions occur directly between your device and the selected Lemmy instance.
 
-1.2. Local Storage
-All data generated or entered within the Thunder app is stored locally on your device. This includes any files, documents, settings, or other information created or accessed through the app. We do not upload or sync your data to any external servers or cloud services.
+Thunder does not manage, control, or have access to the data stored on or processed by third-party Lemmy servers. Users are responsible for reviewing and understanding the privacy policies of the Lemmy instances they connect to.
 
-### Permissions
-2.1. Device Permissions
-The Thunder app requires certain permissions to access device features necessary for its functionality. These permissions may include access to the device's storage or other relevant hardware components. However, these permissions are solely used within the app and do not involve the collection or transmission of data to external sources.
+#### 1.2. Locally Stored Data
+Thunder stores necessary data locally on your device to facilitate functionality, including:
 
-### Data Security
-3.1. Encryption
-To ensure the security of your data, the Thunder app may employ encryption technologies to protect any information stored on your device. This helps safeguard your data from unauthorized access or disclosure.
+- Authentication tokens – Required for logging into third-party Lemmy servers and maintaining active sessions.
+- User preferences and app settings – To retain customization options and improve user experience.
+- Cached content – To enhance performance and minimize redundant network requests.
 
-3.2. App Deletion
-When you uninstall or delete the Thunder app from your device, all data associated with the app will be permanently deleted from your device. We do not retain any of your data once the app is removed.
+Thunder does not upload, sync, or transmit this locally stored data to any external servers or cloud services without your explicit consent.
 
-### Third-Party Services
-4.1. External Links
-The Thunder app may contain links to external websites or services. This Privacy Policy solely applies to the Thunder app and its usage, and we are not responsible for the privacy practices or content of any third-party websites or services. We encourage you to review the privacy policies of those third-party services before providing any personal information.
+### 2. Permissions
+#### 2.1. Device Permissions
+To ensure core functionality, Thunder may request permission to access certain device features, including:
 
-### Changes to the Privacy Policy
-We may update this Privacy Policy from time to time to reflect any changes in our practices or legal requirements. We will notify you about significant changes by providing a prominent notice within the app or by other means. We encourage you to review this Privacy Policy periodically.
+- Storage Access: To store authentication tokens, cached content, and app preferences.
+- Network Access: To facilitate communication with third-party Lemmy servers.
 
-### Contact Us
-If you have any questions, concerns, or suggestions regarding this Privacy Policy or our privacy practices, please contact us at thunderapp@proton.me.
+All permissions requested by Thunder are strictly used to provide the intended functionality and do not result in data collection, storage, or transmission by the App.
 
-Last updated: 2023-07-10
+### 3. Data Security
+#### 3.1. Encryption and Protection
+Thunder may implement encryption or other security measures to safeguard locally stored authentication tokens and other app data. However, any data transmitted to or stored by third-party Lemmy servers is subject to their respective security policies, over which Thunder has no control.
+
+#### 3.2. Data Retention and Deletion
+When Thunder is uninstalled, all locally stored app data, including authentication tokens and cached content, is permanently removed from your device.
+
+However, any content, posts, or interactions submitted to third-party Lemmy servers remain on those servers and are subject to their respective data retention policies. Users must directly contact the administrators of the relevant Lemmy instance to request data deletion from their servers.
+
+### 4. Third-Party Services and External Links
+#### 4.1. Third-Party Lemmy Servers
+Thunder enables users to connect to independently operated third-party Lemmy servers. Thunder does not manage, oversee, or assume responsibility for these servers’ privacy practices, security measures, or data handling procedures.
+
+Users are strongly encouraged to review the privacy policies and terms of service of any Lemmy server they choose to interact with.
+
+#### 4.2. External Links
+Thunder may contain links to third-party websites or services. This Privacy Policy applies solely to Thunder and does not cover third-party platforms. Thunder disclaims responsibility for the data collection, privacy policies, or security practices of any external websites or services. Users should review the privacy policies of external services before providing any personal information.
+
+### 5. Changes to This Privacy Policy
+This Privacy Policy may be updated periodically to reflect changes in legal requirements, security standards, or operational needs. In the event of significant modifications, we will provide notice through the App or other appropriate means.
+
+Continued use of Thunder following any updates constitutes acceptance of the revised Privacy Policy.
+
+### 6. Contact Information
+For any inquiries regarding this Privacy Policy or Thunder’s data practices, please contact us at thunderapp@proton.me
+
+Last updated: March 25, 2025

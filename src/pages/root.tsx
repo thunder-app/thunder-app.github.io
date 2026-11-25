@@ -1,35 +1,38 @@
-import { Link, Outlet } from "react-router-dom";
+import { useEffect } from "react"
+import { Link, Outlet, ScrollRestoration, useLocation } from "react-router-dom"
 
-import Header from "@/components/custom/header";
-import { ThemeProvider } from "@/components/custom/theme-provider";
-import { cn } from "@/lib/utils";
+import Header from "@/components/custom/header"
+import { ThemeProvider } from "@/components/custom/theme-provider"
+import { notFoundTitle, routes } from "@/config/routes"
+import { site } from "@/config/site"
 
-function Root() {
+export default function Root() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    const path = pathname.replace(/\/$/, "")
+    const page = Object.values(routes).find((route) => route.path === path)
+    document.title = path ? page?.title ?? notFoundTitle : "Thunder"
+  }, [pathname])
+
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="thunder-ui-theme">
+    <ThemeProvider>
+      <a href="#main" className="skip-link">Skip to content</a>
       <Header />
-      <Outlet />
-      <div className="text-foreground/40 h-24">
-        <div className="flex flex-row items-center justify-center space-x-2 mb-3">
-          Thunder is available under GNU AGPL v3 license.
+      <main id="main" tabIndex={-1}>
+        <Outlet />
+      </main>
+      <footer className="site-footer">
+        <div className="site-width footer-inner">
+          <a href={site.links.license}>GNU AGPL v3</a>
+          <nav aria-label="Footer navigation">
+            <a href={site.links.weblate}>Translate</a>
+            <Link to={routes.privacy.path}>Privacy</Link>
+            <Link to={routes.terms.path}>Terms</Link>
+          </nav>
         </div>
-        <div className="flex flex-row items-center justify-center space-x-4">
-          <Link
-            to="/privacy-policy"
-            className={cn("hidden transition-colors hover:text-foreground/80 lg:block")}
-          >
-            Privacy Policy
-          </Link>
-          <Link
-            to="/terms-of-use"
-            className={cn("hidden transition-colors hover:text-foreground/80 lg:block")}
-          >
-            Terms of Use
-          </Link>
-        </div>
-      </div>
+      </footer>
+      <ScrollRestoration />
     </ThemeProvider>
-  );
+  )
 }
-
-export default Root;

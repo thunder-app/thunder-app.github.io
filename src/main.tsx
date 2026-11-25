@@ -1,16 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import { StrictMode } from "react"
+import { createRoot } from "react-dom/client"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
-import Root from '@/pages/root';
-import ErrorPage from '@/pages/error';
+import { routes } from "@/config/routes"
 
-import './index.css';
-import Landing from './pages/landing';
-import Docs from './pages/docs';
-import Downloads from './pages/downloads';
-import PrivacyPolicy from './pages/privacy_policy';
-import TermsOfUse from './pages/terms_of_use';
+import ErrorPage from "./pages/error"
+import Landing from "./pages/landing"
+import Root from "./pages/root"
+import "./index.css"
 
 const router = createBrowserRouter([
   {
@@ -19,31 +16,24 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        index: true,
         element: <Landing />,
       },
       {
-        path: "/download",
-        element: <Downloads />,
+        path: routes.privacy.path,
+        lazy: async () => ({ Component: (await import("./pages/privacy_policy")).default }),
       },
       {
-        path: "/docs",
-        element: <Docs />,
+        path: routes.terms.path,
+        lazy: async () => ({ Component: (await import("./pages/terms_of_use")).default }),
       },
-      {
-        path: "/privacy-policy",
-        element: <PrivacyPolicy />,
-      },
-      {
-        path: "/terms-of-use",
-        element: <TermsOfUse />,
-      }
+      { path: "*", element: <ErrorPage /> },
     ],
   },
-]);
+])
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </StrictMode>,
 )

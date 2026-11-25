@@ -1,244 +1,150 @@
-import { Icons } from "@/components/custom/icons";
-import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading, PageHeaderSubHeading } from "@/components/custom/page-header";
-import { buttonVariants } from "@/components/ui/button";
-import { site } from "@/config/site"
-import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion"
-import { useEffect, useRef, useState } from "react";
+import { Circle, Moon, Sun } from "lucide-react"
 
-const modeImages = [
-  "theme-light.png",
-  "theme-dark.png",
-  "theme-black.png"
-];
+import { Icons } from "@/components/custom/icons"
+import { Button } from "@/components/ui/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { site, stores } from "@/config/site"
 
-function Landing() {
-  const downloadsRef = useRef<HTMLDivElement>(null);
-  const [currentModeImage, setCurrentModeImage] = useState(0);
+const accents = ["green", "blue", "red", "yellow"]
+const appThemes = [
+  { label: "Light", image: "theme-light", icon: Sun },
+  { label: "Dark", image: "theme-dark", icon: Moon },
+  { label: "Pure black", image: "theme-black", icon: Circle, fill: "currentColor" },
+]
 
-  const nextImage = () => {
-    setCurrentModeImage((prev) => (prev + 1) % modeImages.length);
-  };
-
-  useEffect(() => {
-    const interval = setInterval(nextImage, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
+function ThemePreview() {
   return (
-    <div className="container relative pb-8 overflow-hidden">
-      <PageHeader>
-        {/* <Announcement /> */}
-        <img src="/thunder.png" width={200} className="rounded-[3em] mb-8" alt="Thunder logo" />
-        <PageHeaderHeading>Thunder</PageHeaderHeading>
-        <PageHeaderDescription>
-          {site.description}
-        </PageHeaderDescription>
-        <PageActions className="md:pb-4">
-          <a onClick={() => window.scrollTo({ top: downloadsRef.current !== null ? downloadsRef.current.offsetTop : 0, behavior: "smooth" })} className={`${cn(buttonVariants())} cursor-pointer`}>
-            <span>Get Thunder</span>
-            <ArrowRight className="ml-2 w-5" />
-          </a>
-        </PageActions>
-        <PageActions className="">
-          <Link
-            target="_blank"
-            to={site.links.github}
-            className={cn(buttonVariants({ variant: "secondary" }))}
-          >
-            <Icons.github className="mr-2 h-4 w-4" />
-            Contribute on GitHub
-          </Link>
-          <Link
-            target="_blank"
-            to={site.links.weblate}
-            className={cn(buttonVariants({ variant: "outline" }))}
-          >
-            <Icons.weblate className="mr-2 h-4 w-4" />
-            Translate via Weblate
-          </Link>
-        </PageActions>
-
-        <PageHeaderSubHeading className="mt-40">
-          It's all about <span className="font-bold text-transparent bg-clip-text bg-linear-to-r from-cyan-500 to-blue-400 dark:from-cyan-500 dark:to-blue-400">Material You</span>
-        </PageHeaderSubHeading>
-        <PageHeaderDescription>
-          Choose your own accent colors, or let Thunder do it for you.
-        </PageHeaderDescription>
-        <div className="relative max-w-(--breakpoint-lg) translate-y-[-50px] lg:translate-y-0 scale-75 lg:scale-100">
-          <div className="absolute inset-y-0 left-0 md:w-40 bg-linear-to-r from-background to-transparent" />
-          <div className="absolute inset-y-0 right-0 md:w-40 bg-linear-to-r from-background to-transparent rotate-180" />
-
-          <section className="flex justify-center gap-3 align-middle pt-3 md:overflow-hidden">
-            <img
-              src="/assets/material-green.png"
-              width={250}
-              className="border-solid border-[6px] dark:border-slate-200 border-slate-700 rounded-3xl"
-            />
-            <img
-              src="/assets/material-blue.png"
-              width={250}
-              className="border-solid border-[6px] dark:border-slate-200 border-slate-700 rounded-3xl"
-            />
-            <img
-              src="/assets/material-red.png"
-              width={250}
-              className="border-solid border-[6px] dark:border-slate-200 border-slate-700 rounded-3xl"
-            />
-            <img
-              src="/assets/material-yellow.png"
-              width={250}
-              className="border-solid border-[6px] dark:border-slate-200 border-slate-700 rounded-3xl"
-            />
-          </section>
+    <section className="landing-section" aria-labelledby="appearance-title">
+      <Tabs defaultValue={appThemes[0].image} className="feature-layout">
+        <div className="feature-copy">
+          <h2 id="appearance-title">Light, dark, and pure <span className="black-accent">black</span></h2>
+          <p className="landing-description">Pick a theme for Thunder or let it follow your device’s appearance.</p>
         </div>
-
-        <PageHeaderSubHeading className="md:mt-40">
-          Light mode, dark mode, and pure <span className="underline">black</span>
-        </PageHeaderSubHeading>
-        <PageHeaderDescription>
-          Switch between light mode, dark mode, and pure black. Or just let your device choose.
-        </PageHeaderDescription>
-        <section className="flex justify-center gap-3 align-middle pt-3 overflow-hidden h-[710px]">
-          {modeImages.map((image, index) => (
-            <motion.img
-              key={index}
-              src={`/assets/${image}`}
-              className="object-cover object-top h-[700px] w-[600px] border-solid border-[6px] dark:border-slate-200 border-slate-700 rounded-t-3xl translate-y-[-50px] lg:translate-y-0 scale-75 lg:scale-100"
-              alt={`Image ${index + 1}`}
-              style={{
-                position: "absolute",
-                width: "395px",
-                opacity: currentModeImage === index ? 1 : 0,
-                transition: "opacity 0.5s ease-out"
-              }}
-            />
-          ))}
-        </section>
-
-
-        <PageHeaderSubHeading className="md:mt-40">
-          Multi-account support? Guest mode? <span className="underline">It's all here</span>
-        </PageHeaderSubHeading>
-        <PageHeaderDescription>
-          Thunder provides multi-account support and guest modes. Manage all your accounts in one place.
-        </PageHeaderDescription>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.20 }}
-          transition={{ duration: 0.4 }}
-          variants={{
-            visible: { opacity: 1, scale: 0.8, translateY: -50 },
-            hidden: { opacity: 0.4, scale: 0.6, translateY: 50 }
-          }}
-        >
-          <section className="flex justify-center gap-3 align-middle pt-3 h-[670px]">
-            <img
-              src="/assets/multi-account.png"
-              className="object-cover object-top h-[800px] w-[600px] border-solid border-[6px] dark:border-slate-200 border-slate-700 rounded-t-3xl translate-y-[-50px] lg:translate-y-0 scale-75 lg:scale-100"
-            />
-          </section>
-        </motion.div>
-
-        <PageHeaderSubHeading id="download" className="md:mt-40">
-          <span className="font-bold text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-indigo-500 dark:from-emerald-500 dark:to-indigo-400">Customizability</span> at your fingertips
-        </PageHeaderSubHeading>
-        <PageHeaderDescription>
-          Craft your own experience. Enable <span className="italic">smooth</span> swipe gestures, switch between card and compact modes, and more.
-        </PageHeaderDescription>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.20 }}
-          transition={{ duration: 0.4 }}
-          variants={{
-            visible: { opacity: 1, scale: 1, translateY: 0 },
-            hidden: { opacity: 0.4, scale: 0.9, translateY: 50 }
-          }}
-        >
-          <section className="relative w-64 h-[640px] lg:h-[1190px] translate-y-[-150px] lg:translate-y-0 scale-50 lg:scale-100">
-            <div>
+        <div className="preview-stage">
+          <TabsList
+            aria-label="App theme preview"
+            className="order-last mt-5 max-w-full flex-wrap border border-border bg-transparent px-1 py-0.5 group-data-[orientation=horizontal]/tabs:h-auto"
+          >
+            {appThemes.map(({ image, label, icon: Icon, fill }) => (
+              <TabsTrigger
+                key={image}
+                value={image}
+                aria-label={label}
+                title={label}
+                className="h-9 min-w-11 flex-none px-3 py-0.5 dark:data-[state=active]:bg-muted"
+              >
+                <Icon aria-hidden="true" fill={fill} />
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          {appThemes.map(({ label, image }) => (
+            <TabsContent key={image} value={image}>
               <img
-                src="/assets/material-green.png"
-                className="border-solid border-[6px] dark:border-slate-200 border-slate-700 rounded-3xl scale-[1.6] translate-y-[240px] shadow-2xl"
+                className="screen-preview single-screen"
+                src={`/previews/${image}.webp`}
+                alt={`Thunder’s feed in ${label.toLowerCase()} mode`}
+                width="560"
+                height="1247"
+                loading="lazy"
               />
-            </div>
-            <div className="absolute inset-0 overflow-hidden rounded-2xl transform translate-x-[-480px] scale-[1.1] opacity-90">
-              <div className="flex flex-col items-center justify-center">
-                <img
-                  src="/assets/create-post.png"
-                  className="rounded-2xl outline-dashed outline-offset-4 scale-[0.9] outline-slate-400"
-                />
-                <p className="mt-2 text-foreground">Post Creation</p>
-              </div>
-            </div>
-            <div className="absolute inset-0 overflow-hidden rounded-2xl transform translate-x-[430px] translate-y-[220px] scale-125 opacity-90">
-              <div className="flex flex-col items-center justify-center">
-                <img
-                  src="/assets/compact-mode.png"
-                  className="rounded-2xl outline-dashed outline-offset-4 scale-[0.9] outline-slate-400"
-                />
-                <p className="mt-2 text-foreground">Compact Mode</p>
-              </div>
-            </div>
-            <div className="absolute inset-0 overflow-hidden rounded-2xl transform translate-x-[-380px] translate-y-[390px] scale-[1.1] drop-shadow-sm opacity-90">
-              <div className="flex flex-col items-center justify-center">
-                <img
-                  src="/assets/card-mode.png"
-                  className="rounded-2xl outline-dashed outline-offset-4 scale-[0.9] outline-slate-400"
-                />
-                <p className="mt-2 text-foreground">Card Mode</p>
-              </div>
-            </div>
-
-            <div className="absolute inset-0 overflow-hidden rounded-2xl transform translate-x-[-480px] translate-y-[1050px] scale-[1.4] drop-shadow-sm opacity-90">
-              <div className="flex flex-col items-center justify-center">
-                <img
-                  src="/assets/comment-settings.png"
-                  className="rounded-2xl outline-dashed outline-offset-4 scale-[0.9] outline-slate-400"
-                />
-                <p className="mt-2 text-foreground">Comments</p>
-              </div>
-            </div>
-
-            <div className="absolute inset-0 overflow-hidden rounded-2xl transform translate-x-[500px] translate-y-[750px] scale-[1.2] drop-shadow-sm opacity-90">
-              <div className="flex flex-col items-center justify-center">
-                <img
-                  src="/assets/account-settings.png"
-                  className="rounded-2xl outline-dashed outline-offset-4 scale-[0.9] outline-slate-400"
-                />
-                <p className="mt-2 text-foreground">Sync Account Settings</p>
-              </div>
-            </div>
-          </section>
-        </motion.div>
-
-        <PageHeaderSubHeading className="mt-40">
-          Download Thunder
-        </PageHeaderSubHeading>
-        <PageHeaderDescription>
-          Thunder is officially available on the <span className="font-semibold">App Store</span>, <span className="font-semibold">Google Play</span>, and <span className="font-semibold">F-Droid (via IzzyOnDroid)</span>.
-        </PageHeaderDescription>
-        <div ref={downloadsRef} className="flex flex-col md:flex-row gap-8 md:gap-6 items-center justify-center mt-6 z-10">
-          <a href="https://apps.apple.com/iq/app/thunder-for-lemmy/id6450518497" className="h-[70px] cursor-pointer">
-            <img src="assets/badges/app_store.svg" className="h-[70px]" />
-          </a>
-          <a href="https://play.google.com/store/apps/details?id=com.hjiangsu.thunder">
-            <img src="assets/badges/google_play.svg" className="h-[70px]" />
-          </a>
-          <a href="https://apt.izzysoft.de/fdroid/index/apk/com.hjiangsu.thunder">
-            <img src="assets/badges/izzy_on_droid.png" className="h-[70px]" />
-          </a>
-          <a href="https://github.com/hjiangsu/thunder/releases/latest">
-            <img src="assets/badges/github.png" className="h-[70px]" />
-          </a>
+            </TabsContent>
+          ))}
         </div>
-      </PageHeader>
-    </div>
+      </Tabs>
+    </section>
   )
 }
 
-export default Landing;
+export default function Landing() {
+  return (
+    <div className="site-width landing">
+      <section className="hero" aria-labelledby="hero-title">
+        <img className="hero-logo" src="/thunder.png" alt="" width="200" height="200" fetchPriority="high" />
+        <h1 id="hero-title">Thunder</h1>
+        <p className="hero-description">{site.description}</p>
+        <Button asChild size="lg" className="h-auto min-h-11 max-w-full whitespace-normal">
+          <a href="#download">Get Thunder</a>
+        </Button>
+        <div className="hero-community">
+          <Button asChild variant="outline" className="h-auto min-h-11 max-w-full whitespace-normal">
+            <a href={site.links.github}><Icons.github aria-hidden="true" /> Contribute on GitHub</a>
+          </Button>
+          <Button asChild variant="outline" className="h-auto min-h-11 max-w-full whitespace-normal">
+            <a href={site.links.weblate}><Icons.weblate aria-hidden="true" /> Translate via Weblate</a>
+          </Button>
+        </div>
+      </section>
+
+      <section className="landing-section" id="features" aria-labelledby="theming-title">
+        <h2 id="theming-title">Make your feed <span className="theming-accent">a little more you</span></h2>
+        <p className="landing-description">
+          Give Thunder your favorite accent color. On supported Android devices, Material You can
+          match the app to your system colors.
+        </p>
+        <div className="accent-gallery">
+          {accents.map((color) => (
+            <img
+              key={color}
+              className="screen-preview"
+              data-accent={color}
+              src={`/previews/material-${color}.webp`}
+              alt={`Thunder’s feed with the ${color} accent`}
+              width="560"
+              height="1247"
+              loading="lazy"
+            />
+          ))}
+        </div>
+      </section>
+
+      <ThemePreview />
+
+      <section className="landing-section" aria-labelledby="accounts-title">
+        <div className="feature-layout feature-layout-reverse">
+          <div className="feature-copy">
+            <h2 id="accounts-title">Your accounts in one place</h2>
+            <p className="landing-description">Switch between accounts on different servers, or browse as a guest.</p>
+          </div>
+          <div className="preview-stage">
+            <img
+              className="screen-preview single-screen"
+              src="/previews/multi-account.webp"
+              alt="The account switcher in Thunder with signed-in and guest accounts"
+              width="560"
+              height="1247"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="landing-section" aria-labelledby="customization-title">
+        <h2 id="customization-title"><span className="customization-accent">Customizability</span> at your fingertips</h2>
+        <p className="landing-description">Give photos room with card view or fit more posts into compact view. Set swipe shortcuts for voting, saving, and replying.</p>
+        <div className="feature-gallery">
+          <img className="screen-preview" src="/previews/create-post.webp" alt="Thunder’s post composer" width="560" height="599" loading="lazy" />
+          <img className="screen-preview" src="/previews/compact-mode.webp" alt="Several posts displayed as compact rows with thumbnails" width="540" height="775" loading="lazy" />
+          <img className="screen-preview" src="/previews/card-mode.webp" alt="Two posts with large photos in card view" width="560" height="675" loading="lazy" />
+        </div>
+        <p className="landing-description">Search with filters, favorite communities, and hide posts that match keywords you choose.</p>
+        <Button asChild variant="outline" className="mt-4 h-auto min-h-11 max-w-full whitespace-normal">
+          <a href={site.links.features}><Icons.github aria-hidden="true" /> See all features on GitHub</a>
+        </Button>
+      </section>
+
+      <section className="landing-section" id="download" aria-labelledby="download-title">
+        <h2 id="download-title">Download Thunder</h2>
+        <p className="landing-description">Free and open source on iOS and Android.</p>
+        <ul className="download-badges">
+          {stores.map(({ name, link, badge }) => (
+            <li key={name}>
+              <a href={link}>
+                <img src={`/assets/badges/${badge.file}`} alt={name} width={badge.width} height={badge.height} loading="lazy" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  )
+}

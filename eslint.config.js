@@ -33,12 +33,12 @@ export default [
     files: [
       "src/components/custom/theme-provider.tsx",
       "src/components/ui/button.tsx",
-      "src/components/ui/navigation-menu.tsx",
+      "src/components/ui/tabs.tsx",
     ],
     rules: {
       "react-refresh/only-export-components": ["warn", {
         allowConstantExport: true,
-        allowExportNames: ["useTheme", "buttonVariants", "navigationMenuTriggerStyle"],
+        allowExportNames: ["useTheme", "buttonVariants", "tabsListVariants"],
       }],
     },
   },

@@ -7,8 +7,10 @@ import { PageHeader } from '@/components/custom/page-header';
 function PrivacyPolicy() {
   return (
     <PageHeader>
-      <div className="container relative pb-8 max-w-screen-2xl items-center">
-        <ReactMarkdown className="prose dark:prose-invert" remarkPlugins={[remarkGfm]}>{privacyPolicy}</ReactMarkdown>
+      <div className="container relative pb-8 max-w-(--breakpoint-2xl) items-center">
+        <div className="prose dark:prose-invert">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{privacyPolicy}</ReactMarkdown>
+        </div>
       </div>
     </PageHeader>
   )

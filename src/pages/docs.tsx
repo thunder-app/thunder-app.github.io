@@ -7,8 +7,10 @@ import { PageHeader } from '@/components/custom/page-header';
 function Docs() {
   return (
     <PageHeader>
-      <div className="container relative pb-8 max-w-screen-2xl items-center">
-        <ReactMarkdown className="prose dark:prose-invert" remarkPlugins={[remarkGfm]}>{introduction}</ReactMarkdown>
+      <div className="container relative pb-8 max-w-(--breakpoint-2xl) items-center">
+        <div className="prose dark:prose-invert">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{introduction}</ReactMarkdown>
+        </div>
       </div>
     </PageHeader>
   )

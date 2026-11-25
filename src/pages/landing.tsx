@@ -62,14 +62,14 @@ function Landing() {
         </PageActions>
 
         <PageHeaderSubHeading className="mt-40">
-          It's all about <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-400 dark:from-cyan-500 dark:to-blue-400">Material You</span>
+          It's all about <span className="font-bold text-transparent bg-clip-text bg-linear-to-r from-cyan-500 to-blue-400 dark:from-cyan-500 dark:to-blue-400">Material You</span>
         </PageHeaderSubHeading>
         <PageHeaderDescription>
           Choose your own accent colors, or let Thunder do it for you.
         </PageHeaderDescription>
-        <div className="relative max-w-screen-lg translate-y-[-50px] lg:translate-y-0 scale-75 lg:scale-100">
-          <div className="absolute inset-y-0 left-0 md:w-40 bg-gradient-to-r from-background to-transparent" />
-          <div className="absolute inset-y-0 right-0 md:w-40 bg-gradient-to-r from-background to-transparent rotate-180" />
+        <div className="relative max-w-(--breakpoint-lg) translate-y-[-50px] lg:translate-y-0 scale-75 lg:scale-100">
+          <div className="absolute inset-y-0 left-0 md:w-40 bg-linear-to-r from-background to-transparent" />
+          <div className="absolute inset-y-0 right-0 md:w-40 bg-linear-to-r from-background to-transparent rotate-180" />
 
           <section className="flex justify-center gap-3 align-middle pt-3 md:overflow-hidden">
             <img
@@ -144,7 +144,7 @@ function Landing() {
         </motion.div>
 
         <PageHeaderSubHeading id="download" className="md:mt-40">
-          <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-indigo-500 dark:from-emerald-500 dark:to-indigo-400">Customizability</span> at your fingertips
+          <span className="font-bold text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-indigo-500 dark:from-emerald-500 dark:to-indigo-400">Customizability</span> at your fingertips
         </PageHeaderSubHeading>
         <PageHeaderDescription>
           Craft your own experience. Enable <span className="italic">smooth</span> swipe gestures, switch between card and compact modes, and more.
@@ -184,7 +184,7 @@ function Landing() {
                 <p className="mt-2 text-foreground">Compact Mode</p>
               </div>
             </div>
-            <div className="absolute inset-0 overflow-hidden rounded-2xl transform translate-x-[-380px] translate-y-[390px] scale-[1.1] drop-shadow opacity-90">
+            <div className="absolute inset-0 overflow-hidden rounded-2xl transform translate-x-[-380px] translate-y-[390px] scale-[1.1] drop-shadow-sm opacity-90">
               <div className="flex flex-col items-center justify-center">
                 <img
                   src="/assets/card-mode.png"
@@ -194,7 +194,7 @@ function Landing() {
               </div>
             </div>
 
-            <div className="absolute inset-0 overflow-hidden rounded-2xl transform translate-x-[-480px] translate-y-[1050px] scale-[1.4] drop-shadow opacity-90">
+            <div className="absolute inset-0 overflow-hidden rounded-2xl transform translate-x-[-480px] translate-y-[1050px] scale-[1.4] drop-shadow-sm opacity-90">
               <div className="flex flex-col items-center justify-center">
                 <img
                   src="/assets/comment-settings.png"
@@ -204,7 +204,7 @@ function Landing() {
               </div>
             </div>
 
-            <div className="absolute inset-0 overflow-hidden rounded-2xl transform translate-x-[500px] translate-y-[750px] scale-[1.2] drop-shadow opacity-90">
+            <div className="absolute inset-0 overflow-hidden rounded-2xl transform translate-x-[500px] translate-y-[750px] scale-[1.2] drop-shadow-sm opacity-90">
               <div className="flex flex-col items-center justify-center">
                 <img
                   src="/assets/account-settings.png"
